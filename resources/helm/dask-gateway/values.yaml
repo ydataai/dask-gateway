@@ -77,8 +77,8 @@ gateway:
   backend:
     # The image to use for both schedulers and workers.
     image:
-      name: daskgateway/dask-gateway
-      tag: 0.9.0
+      name: ydata/dask-gateway
+      tag: 2021.06.0
       pullPolicy: IfNotPresent
 
     # The namespace to launch dask clusters in. If not specified, defaults to
