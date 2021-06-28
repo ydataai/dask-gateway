@@ -46,8 +46,8 @@ ENTRYPOINT ["tini", "-g", "--"]
 # ** An image with all of dask-gateway's dependencies **
 FROM miniconda as dependencies
 
-ARG DASK_VERSION=2.30.0
-ARG DISTRIBUTED_VERSION=2.30.1
+ARG DASK_VERSION=2021.06.0
+ARG DISTRIBUTED_VERSION=2021.06.0
 
 # - Installs dask and dependencies
 # - Cleans up conda files
@@ -56,8 +56,11 @@ ARG DISTRIBUTED_VERSION=2.30.1
 # - Removes unminified bokeh js
 RUN /opt/conda/bin/conda install -c conda-forge --freeze-installed -y \
         aiohttp=3.6.2 \
+        blosc==1.9.2 \
+        lz4==3.1.1 \
         dask==$DASK_VERSION \
         distributed==$DISTRIBUTED_VERSION \
+        msgpack-python==1.0.2 \
         numpy==1.19.2 \
         pandas==1.1.4 \
     && /opt/conda/bin/conda clean -afy \
